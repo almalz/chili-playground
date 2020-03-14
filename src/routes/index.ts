@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { IncomingForm, File } from "formidable";
 import * as fileController from "../controllers/fileController";
+import path from "path";
 // import { __dirname } from "../config";
 
 const router = express.Router();
@@ -16,7 +17,7 @@ router.post("/file", async (req: Request, res: Response) => {
   form.parse(req);
 
   form.on("fileBegin", async (name: string, file: File) => {
-    file.path = __dirname + "/resources/" + file.name;
+    file.path = path.join(__dirname + "/../resources/" + file.name);
     try {
       const fileResponse = await fileController.uploadFile(file);
       res.send(fileResponse);
