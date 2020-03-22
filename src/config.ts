@@ -1,5 +1,5 @@
-// import { fileURLToPath } from "url";
-// import { dirname } from "path";
+import { Sequelize } from 'sequelize'
 
-// export const __filename = fileURLToPath(import.meta.url);
-// export const __dirname = dirname(__filename);
+
+export const sequelize = new Sequelize(process.env.PSQL_CONNEXION_STRING);
+
